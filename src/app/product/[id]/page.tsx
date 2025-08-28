@@ -9,11 +9,11 @@ interface ProductPageProps {
   params: {
     id: string;
   };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const resolvedParams = await params;
-  const product = products.find(p => p.id === resolvedParams.id);
+export default function ProductPage({ params }: ProductPageProps) {
+  const product = products.find(p => p.id === params.id);
 
   if (!product) {
     notFound();
@@ -81,7 +81,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   </svg>
                   Interactive 3D Model
                 </span>
-                • Rotate to explore • Click "View in AR" to place in your space
+                • Rotate to explore • Click &quot;View in AR&quot; to place in your space
               </p>
             </div>
           </div>
